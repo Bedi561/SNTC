@@ -39,7 +39,7 @@ export default function About() {
 
   return (
     <section
-      className="py-12 px-4 sm:py-16 sm:px-6 lg:py-24 lg:px-12 rounded-[40px] w-full overflow-hidden"
+      className="py-12 px-4 sm:py-16 sm:px-6 lg:py-24 lg:px-12 w-full overflow-visible"
       style={{ backgroundColor: "#156082" }}
       ref={ref}
     >
@@ -52,7 +52,7 @@ export default function About() {
           animate={isInView ? "visible" : "hidden"}
         >
           <motion.div
-            className="text-xs uppercase tracking-widest font-light text-[#1f4b68]"
+            className="text-sm uppercase tracking-widest font-medium text-white"
             variants={itemVariants}
           >
             ABOUT US
@@ -66,7 +66,7 @@ export default function About() {
           </motion.h2>
 
           <motion.p
-            className="text-sm sm:text-base leading-relaxed text-[#b8d6dd]"
+            className="text-base sm:text-lg leading-relaxed text-[#b8d6dd]"
             variants={itemVariants}
           >
             With over 25 years of transport excellence, Sun Transmovers is a trusted partner in corporate mobility. From electric cabs to deluxe buses, we deliver sustainable, tech-enabled transport solutions across Delhi NCR and Hyderabad.
@@ -76,7 +76,7 @@ export default function About() {
             <motion.img
               src="/2.jpg"
               alt="Professional chauffeur in suit standing beside luxury vehicle"
-              className="w-full h-48 sm:h-56 lg:h-64 object-cover shadow-xl rounded-xl"
+              className="w-full h-56 sm:h-64 lg:h-72 object-cover shadow-xl rounded-xl"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
             />
@@ -94,7 +94,7 @@ export default function About() {
             <motion.img
               src="/1.jpg"
               alt="Luxury black sedan in front of modern building"
-              className="w-full h-52 sm:h-64 lg:h-80 object-cover shadow-2xl rounded-xl"
+              className="w-full h-56 sm:h-64 lg:h-80 object-cover shadow-2xl rounded-xl"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
             />
@@ -108,7 +108,7 @@ export default function About() {
 
           <motion.div className="space-y-4 px-2 sm:px-0" variants={containerVariants}>
             <motion.p
-              className="text-sm sm:text-base leading-relaxed text-[#b8d6dd]"
+              className="text-base sm:text-lg leading-relaxed text-[#b8d6dd]"
               variants={itemVariants}
             >
               Whether it&apos;s daily corporate transit, educational institution support, or event transportation, our trained staff and real-time fleet monitoring ensure a seamless experience—powered by safety, efficiency, and innovation.
@@ -117,7 +117,7 @@ export default function About() {
             <motion.div variants={itemVariants}>
               <Button
                 variant="outline"
-                className="uppercase tracking-wide px-5 py-2 sm:px-6 sm:py-3 font-medium text-sm sm:text-base transition-all duration-300 hover:shadow-lg hover:scale-105 w-full sm:w-auto"
+                className="uppercase tracking-wide px-5 py-2 sm:px-6 sm:py-3 font-medium text-base sm:text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 w-full sm:w-auto"
                 style={{
                   borderColor: "#1f4b68",
                   borderWidth: "2px",

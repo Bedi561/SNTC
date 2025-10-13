@@ -24,17 +24,12 @@ const faqs = [
     answer:
       "We use journey tracking, safety buttons for emergency alerts, and rigorous vehicle cleanliness standards for your protection.",
   },
-  {
-    question: "How can I contact KRUZE for support?",
-    answer:
-      "Reach out via chat in the app or contact our 24x7 customer support hotline for assistance.",
-  },
 ];
 
 export default function FAQSection() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.25 });
-  const [open, setOpen] = useState<number | null>(null);
+  const [open, setOpen] = useState<number | null>(0);
 
   const containerVariants: Variants = {
     hidden: { opacity: 0, y: 40 },
@@ -56,29 +51,29 @@ export default function FAQSection() {
 
   return (
     <section
-      className="max-w-3xl mx-auto py-24 px-6 bg-[#fafafa] rounded-3xl"
+      className="max-w-2xl mx-auto py-6 mb-12 px-6"
       ref={ref}
     >
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
-        className="mb-14 text-center"
+        className="mb-12 text-center"
       >
         <motion.div
           variants={itemVariants}
-          className="mb-2 text-[#156082] text-sm font-semibold tracking-wide"
+          className="mb-3 text-[#1f4b68] text-xs font-semibold tracking-[0.2em] uppercase"
         >
-          FAQ
+          TRUSTED BY
         </motion.div>
         <motion.h2
           variants={itemVariants}
-          className="font-extrabold text-4xl md:text-5xl mb-6 tracking-tight text-[#1f4b68]"
+          className="font-normal text-[40px] md:text-[48px] leading-tight tracking-tight text-[#1f4b68]"
         >
-          Everything you need to know
+          Frequently<br />Asked Questions
         </motion.h2>
       </motion.div>
-      <div>
+      <div className="space-y-4">
         {faqs.map((faq, idx) => {
           const isOpen = open === idx;
           return (
@@ -87,17 +82,17 @@ export default function FAQSection() {
               variants={itemVariants}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
-              className="border-b border-[#d0dde4] last:border-b-0"
+              className="bg-[#f5f7f9] rounded-2xl overflow-hidden"
             >
               <button
-className="w-full flex items-center justify-between py-7 px-4 text-lg font-medium text-[#1f4b68] focus:outline-none transition-colors duration-300 hover:bg-[#eaf2f7]"
+                className="w-full flex items-center justify-between py-6 px-6 text-left text-[15px] font-normal text-[#1f4b68] focus:outline-none transition-colors duration-300"
                 onClick={() => setOpen(isOpen ? null : idx)}
                 aria-expanded={isOpen}
                 aria-controls={`faq-item-${idx}`}
               >
                 <span>{faq.question}</span>
                 <span
-                  className={`inline-block w-7 h-7 rounded-full bg-[#156082] text-white text-xl flex items-center justify-center transition-transform duration-300 ${
+                  className={`flex-shrink-0 ml-4 inline-grid place-items-center w-8 h-8 rounded-full bg-[#156082] text-white text-lg leading-none transition-transform duration-300 ${
                     isOpen ? "rotate-45" : ""
                   }`}
                 >
@@ -106,15 +101,17 @@ className="w-full flex items-center justify-between py-7 px-4 text-lg font-mediu
               </button>
               <motion.div
                 id={`faq-item-${idx}`}
-                initial={{ height: 0, opacity: 0, scale: 0.95 }}
+                initial={{ height: 0, opacity: 0 }}
                 animate={
                   isOpen
-                    ? { height: "auto", opacity: 1, scale: 1, transition: { duration: 0.35, ease: "easeOut" } }
-                    : { height: 0, opacity: 0, scale: 0.95, transition: { duration: 0.35, ease: "easeIn" } }
+                    ? { height: "auto", opacity: 1, transition: { duration: 0.35, ease: "easeOut" } }
+                    : { height: 0, opacity: 0, transition: { duration: 0.35, ease: "easeIn" } }
                 }
-                className="overflow-hidden text-[#495f7d] px-2 pb-0 text-base"
+                className="overflow-hidden"
               >
-                {faq.answer}
+                <div className="px-6 pb-6 text-[#495f7d] text-[14px] leading-relaxed">
+                  {faq.answer}
+                </div>
               </motion.div>
             </motion.div>
           );

@@ -5,39 +5,42 @@ import { motion, useInView, Variants } from "framer-motion";
 
 const features = [
   {
-    title: "Safety button",
+    title: "Airport Travels",
     description:
-      "Add a reliable contact to receive notifications every time you travel, share your real-time location or contact emergencies.",
+      "Experience seamless, premium airport transfers designed for comfort, punctuality, and style — every trip starts and ends effortlessly.",
     icon: (
       <svg width={48} height={48} fill="none">
-        <rect x="6" y="11" width="36" height="26" rx="6" fill="#156082" />
-        <path d="M24 32c3 0 6-2 6-5v-1a2 2 0 0 0-2-2h-8a2 2 0 0 0-2 2v1c0 3 3 5 6 5z" fill="#fff" />
-        <circle cx="24" cy="20" r="5" fill="#fff" />
+        <circle cx="24" cy="24" r="22" fill="#156082" />
+        <path
+          d="M12 28l8-4 10 8 4-2-8-10 4-2 12 10v4l-4 2H12z"
+          fill="#fff"
+        />
       </svg>
     ),
   },
   {
-    title: "Journey tracking",
+    title: "On-Demand Rides",
     description:
-      "Each journey is tracked and you can share your route in real-time so your friends and family know where you are.",
+      "Request a ride anytime, anywhere — our premium fleet and professional drivers ensure comfort, reliability, and safety on demand.",
     icon: (
       <svg width={48} height={48} fill="none">
-        <circle cx="24" cy="24" r="22" fill="#1f4b68" />
-        <path d="M24 14l10 20-10-7-10 7z" fill="#fff" />
-        <circle cx="24" cy="22" r="4" fill="#fff" />
-        <circle cx="24" cy="22" r="2" fill="#9f6afd" />
+        <rect x="6" y="14" width="36" height="20" rx="6" fill="#1f4b68" />
+        <circle cx="16" cy="32" r="3" fill="#fff" />
+        <circle cx="32" cy="32" r="3" fill="#fff" />
+        <path d="M14 20h20v2H14z" fill="#E9DBB6" />
       </svg>
     ),
   },
   {
-    title: "We’re here for you",
+    title: "Corporate Mobility",
     description:
-      "Our customer support team is here to help you and answer any questions you might have.",
+      "Tailored transport solutions for businesses — dedicated routes, executive rides, and complete mobility management for your teams.",
     icon: (
       <svg width={48} height={48} fill="none">
-        <rect x="10" y="16" width="28" height="16" rx="4" fill="#FFCB6B" />
-        <rect x="14" y="20" width="20" height="8" rx="2" fill="#fff" />
-        <rect x="14" y="26" width="8" height="2" rx="1" fill="#FFCB6B" />
+        <rect x="8" y="10" width="32" height="28" rx="4" fill="#EB8844" />
+        <rect x="12" y="14" width="24" height="6" rx="2" fill="#fff" />
+        <rect x="12" y="24" width="10" height="10" rx="2" fill="#fff" />
+        <rect x="26" y="24" width="10" height="10" rx="2" fill="#fff" />
       </svg>
     ),
   },
@@ -57,28 +60,30 @@ export default function Services() {
   };
 
   return (
-    <section className="py-16 px-4 sm:py-20 sm:px-6" ref={ref}>
+    <section className="py-16 px-4 sm:py-20 sm:px-6 bg-white" ref={ref}>
       <div className="max-w-[1320px] mx-auto">
+        {/* Header */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8 mb-10 md:mb-14">
           <motion.h2
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1f4b68]"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1f4b68] leading-tight"
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.72, ease: "easeOut" }}
-            ref={ref}
           >
-            Committed to <br /> keeping you safe
+            Premium Mobility <br /> for Every Journey
           </motion.h2>
+
           <motion.p
             className="text-xl sm:text-2xl text-[#156082] font-medium flex items-center"
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
           >
-            We’ve created our service with safety in mind, down to every last detail
+            From luxury airport transfers to on-demand rides and corporate travel our premium fleet and service redefine how you move.
           </motion.p>
         </div>
 
+        {/* Features */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {features.map((item, i) => (
             <motion.div
@@ -90,8 +95,12 @@ export default function Services() {
               variants={cardVariants}
             >
               <div className="mb-4 sm:mb-5">{item.icon}</div>
-              <h3 className="text-lg sm:text-xl font-extrabold text-[#1f4b68] mb-2">{item.title}</h3>
-              <p className="text-sm sm:text-base text-[#156082] leading-relaxed">{item.description}</p>
+              <h3 className="text-lg sm:text-xl font-bold text-[#1f4b68] mb-2">
+                {item.title}
+              </h3>
+              <p className="text-sm sm:text-base text-[#156082] leading-relaxed">
+                {item.description}
+              </p>
             </motion.div>
           ))}
         </div>

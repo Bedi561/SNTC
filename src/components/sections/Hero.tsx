@@ -131,15 +131,13 @@
 
 
 
-
-
-
-
 "use client";
 
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import Marquee from "react-fast-marquee";
+import { ArrowRight } from "lucide-react";
 
 const trustedTexts = [
   "Itshift",
@@ -149,10 +147,59 @@ const trustedTexts = [
 ];
 
 export default function Hero() {
-  return (
-<div className="relative min-h-screen w-full bg-[#fafafa] flex items-center px-4 sm:px-6 lg:px-12 py-12 mt-12 lg:mt-0">
+  const heroRef = useRef<HTMLDivElement>(null);
+  const [showNavbar, setShowNavbar] = useState(true);
 
-      <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12">
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!heroRef.current) return;
+      const heroBottom = heroRef.current.getBoundingClientRect().bottom;
+      setShowNavbar(heroBottom > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <div ref={heroRef} className="relative min-h-screen w-full bg-[#fafafa] flex flex-col">
+
+      {/* Animated Hero-only Navbar */}
+      <motion.nav
+        initial={{ y: 0, opacity: 1 }}
+        animate={{ y: showNavbar ? 0 : -80, opacity: showNavbar ? 1 : 0 }}
+        transition={{ type: "spring", stiffness: 120, damping: 20 }}
+        className="fixed top-0 left-0 right-0 z-50 bg-[#1f4b68] text-white"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-4 flex items-center justify-between">
+          {/* Logo/Brand */}
+          <div className="w-32 h-12">
+  <img src="/wwe.png" alt="KRUZE Logo" className="w-full h-full object-contain" />
+</div>
+
+
+          {/* Navigation Menu - Hidden on mobile, visible on desktop */}
+          <div className="hidden lg:flex items-center space-x-8">
+            <a href="#" className="hover:text-gray-200 transition-colors">Home</a>
+            <a href="#" className="hover:text-gray-200 transition-colors">About Us</a>
+            <a href="#" className="hover:text-gray-200 transition-colors">Price</a>
+            <a href="#" className="hover:text-gray-200 transition-colors">References</a>
+            <a href="#" className="hover:text-gray-200 transition-colors">Blog</a>
+            <a href="#" className="hover:text-gray-200 transition-colors">Contact</a>
+          </div>
+
+          {/* CTA Button */}
+          <Button className="bg-[#156082] text-white px-6 py-2 rounded-full font-semibold hover:bg-[#1a5a7a] transition-all flex items-center gap-2">
+            Download Now
+            <ArrowRight size={18} />
+          </Button>
+        </div>
+      </motion.nav>
+
+      {/* Hero content */}
+      <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 pt-28 px-4 sm:px-6 lg:px-12">
         {/* Left Section */}
         <div className="flex-1 flex flex-col space-y-4 mt-6 sm:mt-12 text-center lg:text-left">
           <motion.h1
@@ -213,14 +260,10 @@ export default function Hero() {
                 pauseOnHover={false}
               >
                 {trustedTexts.map((text, idx) => (
-                  <span key={idx} className="mx-3 sm:mx-6 opacity-80">
-                    {text}
-                  </span>
+                  <span key={idx} className="mx-3 sm:mx-6 opacity-80">{text}</span>
                 ))}
                 {trustedTexts.map((text, idx) => (
-                  <span key={"repeat-" + idx} className="mx-3 sm:mx-6 opacity-80">
-                    {text}
-                  </span>
+                  <span key={"repeat-" + idx} className="mx-3 sm:mx-6 opacity-80">{text}</span>
                 ))}
               </Marquee>
             </div>
@@ -229,36 +272,36 @@ export default function Hero() {
 
         {/* Right Section - Cards */}
         <div className="flex w-full sm:w-[500px] lg:w-[600px] gap-3 mt-12 sm:mt-24">
- {/* Left Column */}
-           <div className="flex flex-col gap-3 w-full sm:w-[230px]">
-             {/* Top Image Card */}
-             <motion.div
-               className="relative rounded-2xl overflow-hidden bg-[#156082] h-[200px] sm:h-[280px]"
-               initial={{ opacity: 0, x: 40 }}
-               animate={{ opacity: 1, x: 0 }}
-               transition={{ duration: 1, delay: 0.22 }}
-             />
-             {/* Bottom Stats Card */}
-             <motion.div
-               className="bg-[#156082] rounded-2xl text-white px-6 py-8 flex flex-col justify-center items-start h-[140px] sm:h-[180px] w-full sm:w-[180px] ml-auto"
-               initial={{ opacity: 0, y: 25 }}
-               animate={{ opacity: 1, y: 0 }}
-               transition={{ duration: 1, delay: 0.3 }}
-             />
-           </div>
+          {/* Left Column */}
+          <div className="flex flex-col gap-3 w-full sm:w-[230px]">
+            {/* Top Image Card */}
+            <motion.div
+              className="relative rounded-2xl overflow-hidden bg-[#156082] h-[200px] sm:h-[280px]"
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, delay: 0.22 }}
+            />
+            {/* Bottom Stats Card */}
+            <motion.div
+              className="bg-[#156082] rounded-2xl text-white px-6 py-8 flex flex-col justify-center items-start h-[140px] sm:h-[180px] w-full sm:w-[180px] ml-auto"
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.3 }}
+            />
+          </div>
 
-           {/* Right Column - Person Card */}
-           <motion.div
-             className="relative rounded-2xl overflow-hidden bg-[#156082] flex-1 h-[250px] sm:h-[330px] flex items-end mt-16"
-             initial={{ opacity: 0, x: 20 }}
-             animate={{ opacity: 1, x: 0 }}
-             transition={{ duration: 1, delay: 0.36 }}
-           >
-             <div className="absolute top-4 right-4 bg-[#156082] bg-opacity-90 text-white text-lg px-4 py-2 rounded-xl text-right" />
-             <div className="absolute bottom-4 left-4 bg-opacity-70 text-white text-base px-4 py-2 rounded-xl" />
-           </motion.div>
-         </div>
-</div>
+          {/* Right Column - Person Card */}
+          <motion.div
+            className="relative rounded-2xl overflow-hidden bg-[#156082] flex-1 h-[250px] sm:h-[330px] flex items-end mt-16"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.36 }}
+          >
+            <div className="absolute top-4 right-4 bg-[#156082] bg-opacity-90 text-white text-lg px-4 py-2 rounded-xl text-right" />
+            <div className="absolute bottom-4 left-4 bg-opacity-70 text-white text-base px-4 py-2 rounded-xl" />
+          </motion.div>
+        </div>
+      </div>
     </div>
   );
 }
