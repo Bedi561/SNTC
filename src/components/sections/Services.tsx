@@ -37,7 +37,7 @@ const features = [
       "Tailored transport solutions for businesses — dedicated routes, executive rides, and complete mobility management for your teams.",
     icon: (
       <svg width={48} height={48} fill="none">
-        <rect x="8" y="10" width="32" height="28" rx="4" fill="#EB8844" />
+        <rect x="8" y="10" width="32" height="28" rx="4" fill="#1f4b68" />
         <rect x="12" y="14" width="24" height="6" rx="2" fill="#fff" />
         <rect x="12" y="24" width="10" height="10" rx="2" fill="#fff" />
         <rect x="26" y="24" width="10" height="10" rx="2" fill="#fff" />
@@ -60,12 +60,12 @@ export default function Services() {
   };
 
   return (
-    <section className="py-16 px-4 sm:py-20 sm:px-6 bg-white" ref={ref}>
-      <div className="max-w-[1320px] mx-auto">
+    <section className="py-24 px-6 sm:py-32 sm:px-8 bg-white" ref={ref}>
+      <div className="max-w-[1240px] mx-auto">
         {/* Header */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8 mb-10 md:mb-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10 mb-28 md:mb-32">
           <motion.h2
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1f4b68] leading-tight"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1f4b68] leading-snug"
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.72, ease: "easeOut" }}
@@ -74,31 +74,32 @@ export default function Services() {
           </motion.h2>
 
           <motion.p
-            className="text-xl sm:text-2xl text-[#156082] font-medium flex items-center"
+            className="text-xl sm:text-2xl text-[#156082] font-medium flex items-center leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
           >
-            From luxury airport transfers to on-demand rides and corporate travel our premium fleet and service redefine how you move.
+            From luxury airport transfers to on-demand rides and corporate
+            travel our premium fleet and service redefine how you move.
           </motion.p>
         </div>
 
         {/* Features */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-14">
           {features.map((item, i) => (
             <motion.div
               key={item.title}
-              className="bg-white rounded-3xl border border-[#ede7fd] hover:shadow-lg shadow transition-all duration-300 p-6 sm:p-8 flex flex-col items-center text-center min-h-[260px] sm:min-h-[290px]"
+              className="bg-white rounded-3xl border border-[#f3f0ff] shadow-[0_2px_10px_rgba(0,0,0,0.06)] hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)] transition-all duration-300 p-10 sm:p-12 flex flex-col items-center text-center min-h-[300px] sm:min-h-[320px]"
               custom={i}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
               variants={cardVariants}
             >
-              <div className="mb-4 sm:mb-5">{item.icon}</div>
-              <h3 className="text-lg sm:text-xl font-bold text-[#1f4b68] mb-2">
+              <div className="mb-6 sm:mb-8">{item.icon}</div>
+              <h3 className="text-lg sm:text-xl font-bold text-[#1f4b68] mb-3">
                 {item.title}
               </h3>
-              <p className="text-sm sm:text-base text-[#156082] leading-relaxed">
+              <p className="text-sm sm:text-base text-[#156082] leading-relaxed max-w-[280px]">
                 {item.description}
               </p>
             </motion.div>

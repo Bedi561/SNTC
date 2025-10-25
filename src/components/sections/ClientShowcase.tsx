@@ -51,7 +51,7 @@ export default function FAQSection() {
 
   return (
     <section
-      className="max-w-2xl mx-auto py-6 mb-12 px-6"
+      className="max-w-2xl mx-auto py-2 mb-12 px-6"
       ref={ref}
     >
       <motion.div
@@ -60,12 +60,7 @@ export default function FAQSection() {
         animate={isInView ? "visible" : "hidden"}
         className="mb-12 text-center"
       >
-        <motion.div
-          variants={itemVariants}
-          className="mb-3 text-[#1f4b68] text-xs font-semibold tracking-[0.2em] uppercase"
-        >
-          TRUSTED BY
-        </motion.div>
+
         <motion.h2
           variants={itemVariants}
           className="font-normal text-[40px] md:text-[48px] leading-tight tracking-tight text-[#1f4b68]"
@@ -92,12 +87,15 @@ export default function FAQSection() {
               >
                 <span>{faq.question}</span>
                 <span
-                  className={`flex-shrink-0 ml-4 inline-grid place-items-center w-8 h-8 rounded-full bg-[#156082] text-white text-lg leading-none transition-transform duration-300 ${
-                    isOpen ? "rotate-45" : ""
-                  }`}
-                >
-                  +
-                </span>
+  className={`ml-4 relative flex w-8 h-8 rounded-full bg-[#156082] text-white text-lg transition-transform duration-300 ${
+    isOpen ? "rotate-45" : ""
+  }`}
+>
+  <span className="absolute inset-0 flex items-center justify-center font-medium select-none transform translate-x-[0.5px] translate-y-[-1px]">
+    +
+  </span>
+</span>
+
               </button>
               <motion.div
                 id={`faq-item-${idx}`}
@@ -109,7 +107,7 @@ export default function FAQSection() {
                 }
                 className="overflow-hidden"
               >
-                <div className="px-6 pb-6 text-[#495f7d] text-[14px] leading-relaxed">
+                <div className="px-6 pb-4 text-[#495f7d] text-[14px] leading-relaxed">
                   {faq.answer}
                 </div>
               </motion.div>

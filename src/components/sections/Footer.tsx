@@ -17,17 +17,16 @@ export default function Footer() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-12 flex flex-col md:flex-row justify-between items-start gap-10 md:gap-12">
         {/* Logo/Message */}
-        <div className="flex flex-col items-start space-y-3 md:space-y-4 min-w-[240px]">
-          <img src="wwe.png" alt="Kruze" className="h-16 sm:h-20 mb-1 md:mb-2" />
+        <div className="flex flex-col items-start space-y-1 md:space-y-1 min-w-[240px]">
+          <img src="wwe.png" alt="Kruze" className="h-16 sm:h-20 mb-1 md:mb-2 -ml-3" />
           <p className="text-sm sm:text-base text-[#fafafa] leading-relaxed max-w-xs">
             Experience the difference of a ride that&apos;s big on care, comfort, and attention to every detail.
           </p>
         </div>
 
         {/* Sections */}
-        <div className="flex flex-row gap-8 sm:gap-12">
+        <div className="flex flex-row gap-8 sm:gap-12 mt-6 md:mt-5">
           <div>
-            <div className="font-medium mb-3 sm:mb-4 text-[#fafafa] text-sm sm:text-base">Sections</div>
             <ul className="space-y-1 sm:space-y-2 text-sm sm:text-base text-[#fafafa]">
               <li>
                 <a href="#about" className="hover:underline transition">
@@ -47,7 +46,6 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <div className="font-medium mb-3 sm:mb-4 text-[#fafafa] text-sm sm:text-base">Socials</div>
             <ul className="space-y-1 sm:space-y-2 text-sm sm:text-base text-[#fafafa]">
               <li>
                 <a

@@ -175,8 +175,8 @@ export default function Hero() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-4 flex items-center justify-between">
           {/* Logo/Brand */}
-          <div className="w-32 h-12">
-  <img src="/wwe.png" alt="KRUZE Logo" className="w-full h-full object-contain" />
+          <div className="w-40 h-16">
+  <img src="/wwe.png" alt="KRUZE Logo" className="w-full h-full object-contain -ml-3" />
 </div>
 
 
@@ -199,9 +199,9 @@ export default function Hero() {
       </motion.nav>
 
       {/* Hero content */}
-      <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 pt-28 px-4 sm:px-6 lg:px-12">
+      <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 pt-20 px-4 sm:px-6 lg:px-12">
         {/* Left Section */}
-        <div className="flex-1 flex flex-col space-y-4 mt-6 sm:mt-12 text-center lg:text-left">
+        <div className="flex-1 flex flex-col space-y-4 mt-3 sm:mt-8 text-center lg:text-left">
           <motion.h1
             className="text-[#1f4b68] font-bold text-[32px] sm:text-[40px] lg:text-[56px] leading-tight"
             initial={{ opacity: 0, y: 40 }}
@@ -222,8 +222,8 @@ export default function Hero() {
 
           {/* Ratings */}
           <div className="flex items-center justify-center lg:justify-start space-x-2 sm:space-x-3">
-            <span className="text-yellow-400 text-lg sm:text-xl">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span className="text-[#1f4b68] text-xs sm:text-sm">
+            <span className="text-yellow-400 text-xl sm:text-2xl">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span className="text-[#1f4b68] text-xs sm:text-sm font-bold">
               Trusted by 10,000+ Premium Riders in Delhi NCR
             </span>
           </div>
