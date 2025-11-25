@@ -60,14 +60,14 @@ export default function FAQSection() {
         animate={isInView ? "visible" : "hidden"}
         className="mb-12 text-center"
       >
-
         <motion.h2
           variants={itemVariants}
-          className="font-normal text-[40px] md:text-[48px] leading-tight tracking-tight text-[#1f4b68]"
+          className="text-[40px] md:text-[48px] leading-tight tracking-tight text-[#1f4b68] font-semibold"
         >
           Frequently<br />Asked Questions
         </motion.h2>
       </motion.div>
+
       <div className="space-y-4">
         {faqs.map((faq, idx) => {
           const isOpen = open === idx;
@@ -80,23 +80,23 @@ export default function FAQSection() {
               className="bg-[#f5f7f9] rounded-2xl overflow-hidden"
             >
               <button
-                className="w-full flex items-center justify-between py-6 px-6 text-left text-[15px] font-normal text-[#1f4b68] focus:outline-none transition-colors duration-300"
+                className="w-full flex items-center justify-between py-6 px-6 text-left text-[15px] text-[#1f4b68] focus:outline-none transition-colors duration-300 font-medium"
                 onClick={() => setOpen(isOpen ? null : idx)}
                 aria-expanded={isOpen}
                 aria-controls={`faq-item-${idx}`}
               >
                 <span>{faq.question}</span>
                 <span
-  className={`ml-4 relative flex w-8 h-8 rounded-full bg-[#156082] text-white text-lg transition-transform duration-300 ${
-    isOpen ? "rotate-45" : ""
-  }`}
->
-  <span className="absolute inset-0 flex items-center justify-center font-medium select-none transform translate-x-[0.5px] translate-y-[-1px]">
-    +
-  </span>
-</span>
-
+                  className={`ml-4 relative flex w-8 h-8 rounded-full bg-[#156082] text-white text-lg transition-transform duration-300 ${
+                    isOpen ? "rotate-45" : ""
+                  }`}
+                >
+                  <span className="absolute inset-0 flex items-center justify-center select-none transform translate-x-[0.5px] translate-y-[-1px]">
+                    +
+                  </span>
+                </span>
               </button>
+
               <motion.div
                 id={`faq-item-${idx}`}
                 initial={{ height: 0, opacity: 0 }}
@@ -107,7 +107,7 @@ export default function FAQSection() {
                 }
                 className="overflow-hidden"
               >
-                <div className="px-6 pb-4 text-[#495f7d] text-[14px] leading-relaxed">
+                <div className="px-6 pb-4 text-[#495f7d] text-[14px] leading-relaxed font-normal">
                   {faq.answer}
                 </div>
               </motion.div>
