@@ -3,6 +3,7 @@
 
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import Image from "next/image";
 
 export default function Footer() {
   const footerRef = useRef<HTMLElement>(null);
@@ -11,84 +12,94 @@ export default function Footer() {
   return (
     <motion.footer
       ref={footerRef}
-      className="bg-[#156082] w-full relative pb-20 sm:pb-24 lg:pb-52 overflow-hidden"
+      className="w-full relative overflow-hidden"
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : { opacity: 0 }}
       transition={{ duration: 0.8 }}
     >
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-8 sm:px-8 lg:px-5 py-16 relative z-10">
-        <div className="flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-16">
-          {/* Left Section - Join Community */}
-          <div className="flex flex-col items-start max-w-md">
-            <img src="wwe.png" alt="Kruze" className="h-16 sm:h-20 mb-1 md:mb-2 -ml-3" />
-            <p className="text-[#c9c5b8] text-sm leading-relaxed">
-              Experience the difference of a ride that&apos;s big on care, comfort, and attention to every detail.
+      <div className="max-w-7xl mx-auto px-8 sm:px-10 lg:px-6 py-20 relative z-10">
+        <div className="flex flex-col lg:flex-row justify-between gap-20">
+
+          {/* Brand Section */}
+          <div className="max-w-sm">
+            <Image
+              src="/w.png"
+              alt="Kruze"
+              width={200}
+              height={120}
+              className="h-17 w-auto -ml-3 object-contain"
+              priority
+            />
+
+            <p className="text-[#000000] text-sm leading-relaxed mt-4 max-w-xs">
+              Premium mobility, elevated with care, comfort, and attention to detail—every ride, every time.
             </p>
           </div>
 
-          {/* Right Section - Navigation Columns */}
-          <div className="flex flex-wrap gap-12 sm:gap-16 lg:gap-20">
-            {/* Follow Column */}
-            <div>
-              <h4 className="text-[#8a8778] text-xs font-bold uppercase tracking-wider mb-4">
-                FOLLOW
+          {/* Navigation Columns */}
+          <div className="flex flex-wrap gap-16 sm:gap-20 lg:gap-28">
+
+            {/* Follow */}
+            <div className="min-w-[120px]">
+              <h4 className="text-[#000000] text-[11px] font-semibold uppercase tracking-wide mb-5">
+                Follow
               </h4>
-              <ul className="space-y-2 text-[#c9c5b8]">
+
+              <ul className="space-y-3 text-[#000000] text-sm">
                 <li>
-                  <a href="#instagram" className="hover:text-white transition font-bold">
-                    INSTAGRAM
+                  <a className="hover:text-white transition font-medium" href="#">
+                    Instagram
                   </a>
                 </li>
                 <li>
-                  <a href="#facebook" className="hover:text-white transition font-bold">
-                    FACEBOOK
+                  <a className="hover:text-white transition font-medium" href="#">
+                    Facebook
                   </a>
                 </li>
                 <li>
-                  <a href="#twitter" className="hover:text-white transition font-bold">
-                    X (TWITTER)
+                  <a className="hover:text-white transition font-medium" href="#">
+                    X (Twitter)
                   </a>
                 </li>
               </ul>
             </div>
 
-            {/* About Column */}
-            <div>
-              <h4 className="text-[#8a8778] text-xs font-bold uppercase tracking-wider mb-4">
-                ABOUT
+            {/* About */}
+            <div className="min-w-[120px]">
+              <h4 className="text-[#000000] text-[11px] font-semibold uppercase tracking-wide mb-5">
+                About
               </h4>
-              <ul className="space-y-2 text-[#c9c5b8]">
+
+              <ul className="space-y-3 text-[#000000] text-sm">
                 <li>
-                  <a href="#what-is-go-rving" className="hover:text-white transition font-bold">
-                    OUR WAY
+                  <a className="hover:text-white transition font-medium" href="#">
+                    Our Way
                   </a>
                 </li>
                 <li>
-                  <a href="#contact" className="hover:text-white transition font-bold">
-                    CONTACT US
+                  <a className="hover:text-white transition font-medium" href="#">
+                    Contact Us
                   </a>
                 </li>
               </ul>
             </div>
+
+          </div>
+        </div>
+
+        {/* Divider */}
+        <div className="w-full h-px bg-white/10 my-14" />
+
+        {/* Bottom Row */}
+        <div className="flex flex-col sm:flex-row justify-between items-center text-[#000000] text-xs gap-4">
+          <p>© {new Date().getFullYear()} Kruze Mobility. All rights reserved.</p>
+          <div className="flex gap-6">
+            <a href="#" className=" transition">Terms</a>
+            <a href="#" className="transition">Privacy</a>
           </div>
         </div>
       </div>
-
-      {/* Background Logo Image */}
-<div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-  <img
-    src="wwe.png"
-    alt="Kruze Background"
-    className="opacity-10 object-fit select-none"
-    style={{
-      width: '2000px',       // Hard width
-      height: 'auto',        // Keep aspect ratio
-      paddingTop: '12rem',   // Top spacing
-    }}
-  />
-</div>
-
     </motion.footer>
   );
 }

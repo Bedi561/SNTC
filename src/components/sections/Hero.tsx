@@ -128,14 +128,12 @@
 //     </div>
 //   );
 // }
-
 "use client";
 
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Marquee from "react-fast-marquee";
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { qurova } from "../../font"; // only for main heading
+import { plusJakartaSans } from "../../font";
 
 const trustedTexts = ["Itshift", "Nietzsche", "GlobalBank", "CloudWatch"];
 
@@ -160,8 +158,8 @@ export default function Hero() {
   return (
     <div
       ref={heroRef}
-      className="relative min-h-screen w-full bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/12.png')" }}
+      className={`relative min-h-screen w-full bg-cover bg-center bg-no-repeat ${plusJakartaSans.className}`}
+      style={{ backgroundImage: "url('/15.png')" }}
     >
       {/* Navbar */}
       <motion.nav
@@ -184,20 +182,22 @@ export default function Hero() {
       {/* Hero Text */}
       <div className="absolute bottom-16 left-24 max-w-7xl w-full">
         <div className="flex-1 flex flex-col space-y-6 text-white drop-shadow-xl pb-8">
+
           {/* Main Heading */}
           <motion.h1
-            className="text-[38px] sm:text-[48px] lg:text-[62px] leading-tight tracking-tight font-semibold"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            // style={{ fontFamily: qurova.style.fontFamily, fontWeight: 400 }} // Only kruze your way
-          >
-            KRUZE YOUR WAY
-          </motion.h1>
+  className="text-[64px] sm:text-[86px] lg:text-[110px] leading-tight tracking-tight font-semibold"
+  initial={{ opacity: 0, y: 40 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 1 }}
+>
+  Move Better<br />
+  Move Elevated.
+</motion.h1>
+
 
           {/* Subtext */}
           <span className="text-white text-sm">
-            Used by 10,000+ Premium Riders in Delhi NCR
+            Preferred by 10,000+ Premium Riders in Delhi NCR
           </span>
 
           {/* Trusted By Marquee */}
@@ -210,8 +210,8 @@ export default function Hero() {
             </div>
 
             <div className="relative w-full max-w-md">
-              <div className="absolute left-0 top-0 h-full w-16 bg-gradient-to-r from-[#00000065] to-transparent pointer-events-none z-10" />
-              <div className="absolute right-0 top-0 h-full w-16 bg-gradient-to-l z-10" />
+              <div className="absolute left-0 top-0 h-full w-16 bg-gradient-to-r pointer-events-none z-10" />
+              <div className="absolute right-0 top-0 h-full w-16 bg-gradient-to-l pointer-events-none z-10" />
 
               <Marquee className="text-white tracking-wide" gradient={false} speed={32}>
                 {trustedTexts.map((text, idx) => (

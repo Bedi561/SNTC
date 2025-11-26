@@ -4,6 +4,7 @@ import { motion, useInView, Variants } from "framer-motion";
 import { useRef } from "react";
 import { CometImage } from "@/components/ui/comet-card";
 import SlideArrowButton from "@/components/ui/slide-arrow-button";
+import { plusJakartaSans } from "../../font"; // ✅ ADD THIS
 
 export default function About() {
   const ref = useRef<HTMLDivElement>(null);
@@ -30,7 +31,7 @@ export default function About() {
   return (
     <section
       ref={ref}
-      className="w-full h-auto overflow-hidden pt-20 pb-10 mt-20"
+      className={`w-full h-auto overflow-hidden pt-20 pb-10 mt-20 ${plusJakartaSans.className}`} // ✅ APPLY FONT HERE
     >
       <div className="w-full h-auto grid grid-cols-1 lg:grid-cols-2">
 
@@ -42,8 +43,9 @@ export default function About() {
           className="relative w-full h-auto flex items-center justify-center px-10 lg:px-12"
         >
           {/* Gradient Glow Behind Card */}
-          <div className="absolute rounded-[40px] blur-3xl opacity-30 
-            bg-gradient-to-br from-[#1f4b68] via-[#156082] to-[#1a7ba3]" 
+          <div
+            className="absolute rounded-[40px] blur-3xl opacity-30 
+            bg-gradient-to-br from-[#1f4b68] via-[#156082] to-[#1a7ba3]"
           />
 
           {/* Comet Card */}
@@ -87,7 +89,6 @@ export default function About() {
           <motion.div variants={fadeUp}>
             <SlideArrowButton text="Get the App" primaryColor="#000000" />
           </motion.div>
-
         </motion.div>
       </div>
     </section>

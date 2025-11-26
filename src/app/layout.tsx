@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { qurova } from "../font"; // import your local font
+import { plusJakartaSans } from "../font"; // use ONLY Plus Jakarta Sans
 
 export const metadata: Metadata = {
   title: "SunTrans Movers",
@@ -16,7 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         suppressHydrationWarning
-        className={`${qurova.variable} font-sans antialiased`}
+        className={`${plusJakartaSans.variable} ${plusJakartaSans.className} antialiased`}
       >
         {children}
       </body>

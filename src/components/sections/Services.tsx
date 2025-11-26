@@ -2,61 +2,41 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "motion/react";
+import { plusJakartaSans } from "../../font"; // ✅ add this
+import { Airplane, Car, Suitcase } from "iconoir-react";
 
-// Feature data
+
 const features = [
   {
     title: "Airport Travels",
     description:
       "Experience seamless, premium airport transfers designed for comfort, punctuality, and style — every trip starts and ends effortlessly.",
-    icon: (
-      <svg width={56} height={56} viewBox="0 0 56 56" fill="none">
-        <path
-          d="M42 24.5L28 17.5l-7 3.5-7-7-3.5 1.75 5.25 10.5-5.25 3.5-5.25-3.5-1.75.875 3.5 7 1.75.875h28l5.25-2.625v-5.25l-10.5-8.75z"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    ),
+    icon: <Airplane width={56} height={56} strokeWidth={1.5} />,
   },
   {
     title: "On-Demand Rides",
     description:
       "Request a ride anytime, anywhere — our premium fleet and professional drivers ensure comfort, reliability, and safety on demand.",
-    icon: (
-      <svg width={56} height={56} viewBox="0 0 56 56" fill="none">
-        <rect x="8" y="18" width="40" height="20" rx="4" stroke="currentColor" strokeWidth="1.5" fill="none" />
-        <circle cx="18" cy="38" r="3.5" stroke="currentColor" strokeWidth="1.5" fill="none" />
-        <circle cx="38" cy="38" r="3.5" stroke="currentColor" strokeWidth="1.5" fill="none" />
-        <path d="M14 22l3.5-3.5h21L42 22M12 28h32" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      </svg>
-    ),
+    icon: <Car width={56} height={56} strokeWidth={1.5} />,
   },
   {
     title: "Corporate Mobility",
     description:
       "Tailored transport solutions for businesses — dedicated routes, executive rides, and complete mobility management for your teams.",
-    icon: (
-      <svg width={56} height={56} viewBox="0 0 56 56" fill="none">
-        <rect x="10" y="12" width="36" height="32" rx="3" stroke="currentColor" strokeWidth="1.5" fill="none" />
-        <rect x="15" y="17" width="26" height="7" rx="2" stroke="currentColor" strokeWidth="1.5" fill="none" />
-        <rect x="15" y="28" width="11" height="11" rx="2" stroke="currentColor" strokeWidth="1.5" fill="none" />
-        <rect x="30" y="28" width="11" height="11" rx="2" stroke="currentColor" strokeWidth="1.5" fill="none" />
-      </svg>
-    ),
+    icon: <Suitcase width={56} height={56} strokeWidth={1.5} />,
   },
 ];
-
 export default function Services() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <section className="py-32 px-6 sm:px-8" ref={ref}>
+    <section
+      className={`py-32 px-6 sm:px-8 ${plusJakartaSans.className}`} // ✅ apply font here
+      ref={ref}
+    >
       <div className="max-w-[1320px] mx-auto">
+
         {/* Horizontal line before the section */}
         <motion.div
           className="mb-12 h-px bg-neutral-300 w-full"
@@ -92,33 +72,30 @@ export default function Services() {
               <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-[#1f4b68] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-[#1f4b68] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-              <div className="p-12 flex flex-col min-h-[520px]">
-                {/* Icon */}
-                <div className="mb-8 text-neutral-900 transform group-hover:scale-105 transition-transform duration-500">
-                  {item.icon}
-                </div>
+             <div className="p-12 flex flex-col min-h-[520px]">
 
-                {/* Number */}
-                <div
-                  className="mb-6 text-7xl group-hover:text-neutral-300 transition-colors duration-500 font-bold"
-                  style={{ color: '#156082' }}
-                >
-                  {String(i + 1).padStart(2, '0')}
-                </div>
+  {/* Number */}
+  <div
+    className="mb-10 text-7xl font-bold tracking-[-0.03em] text-[#156082] 
+               transition-colors duration-500"
+  >
+    {String(i + 1).padStart(2, "0")}
+  </div>
 
-                {/* Title */}
-                <h3 className="mb-5 text-3xl text-neutral-900 leading-tight font-semibold">
-                  {item.title}
-                </h3>
+  {/* Title */}
+  <h3 className="mb-4 text-3xl text-neutral-900 font-semibold leading-snug tracking-[-0.01em]">
+    {item.title}
+  </h3>
 
-                {/* Divider */}
-                <div className="w-12 h-px bg-neutral-300 mb-6" />
+  {/* Divider */}
+  <div className="w-14 h-[2px] bg-neutral-300/80 mb-6" />
 
-                {/* Description */}
-                <p className="text-neutral-600 leading-relaxed text-lg flex-grow font-medium">
-                  {item.description}
-                </p>
-              </div>
+  {/* Description */}
+  <p className="text-neutral-600 text-[1.05rem] leading-relaxed font-medium tracking-[0.005em] flex-grow">
+    {item.description}
+  </p>
+</div>
+
             </motion.div>
           ))}
         </div>

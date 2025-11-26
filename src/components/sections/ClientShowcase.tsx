@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import { motion, useInView, Variants } from "framer-motion";
+import { plusJakartaSans } from "../../font"; // <-- import your custom font
 
 const faqs = [
   {
@@ -51,7 +52,8 @@ export default function FAQSection() {
 
   return (
     <section
-      className="max-w-2xl mx-auto py-2 mb-12 px-6"
+      className={`${plusJakartaSans.variable} max-w-2xl mx-auto py-2 mb-12 px-6`}
+      style={{ fontFamily: "var(--font-plus-jakarta-sans)" }} // <-- ensures usage
       ref={ref}
     >
       <motion.div

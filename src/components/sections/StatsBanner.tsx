@@ -1,163 +1,109 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-'use client';
-import { useState, useEffect, useRef } from "react";
-import { motion, useInView } from "framer-motion";
+"use client";
 
-interface AnimatedCounterProps {
-  target: number;
-  suffix?: string;
-  duration?: number;
-  index?: number;
-}
-
-function AnimatedCounter({ target, suffix = "", duration = 2000, index = 0 }: AnimatedCounterProps) {
-  const [count, setCount] = useState(0);
-  const [hasAnimated, setHasAnimated] = useState(false);
-  const elementRef = useRef(null);
-  const isInView = useInView(elementRef, { amount: 0.5, once: true });
-
-  useEffect(() => {
-    if (isInView && !hasAnimated) {
-      setHasAnimated(true);
-      animateCounter();
-    }
-  }, [isInView, hasAnimated]);
-
-  const animateCounter = () => {
-    const startTime = Date.now();
-    const startValue = 0;
-
-    const updateCounter = () => {
-      const elapsed = Date.now() - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      
-      // Easing function for smooth animation
-      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-      const currentValue = Math.floor(startValue + (target - startValue) * easeOutQuart);
-      
-      setCount(currentValue);
-
-      if (progress < 1) {
-        requestAnimationFrame(updateCounter);
-      }
-    };
-
-    requestAnimationFrame(updateCounter);
-  };
-
-  return (
-    <motion.div 
-      ref={elementRef} 
-      className="text-5xl lg:text-6xl font-bold text-white"
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
-      transition={{ 
-        duration: 0.6, 
-        delay: index * 0.1,
-        ease: "easeOut"
-      }}
-    >
-      {count.toLocaleString()}{suffix}
-    </motion.div>
-  );
-}
+import { motion } from "framer-motion";
+// import { Apple, Play } from "lucide-react"; // icons (lightweight + premium)
 
 export default function StatsBanner() {
-const stats = [
-  { label: "CNG STAFF TRANSPORT VEHICLES", value: 2000, suffix: "+" },
-  { label: "ELECTRIC CABS & BUSES", value: 200, suffix: "+" },
-  { label: "DELUXE CORPORATE BUSES", value: 300, suffix: "+" },
-  { label: "TEMPO TRAVELLERS FOR TEAMS", value: 200, suffix: "+" },
-];
-
-
-  const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { amount: 0.3, once: true });
-
   return (
-    <section className="relative w-full py-16 overflow-hidden" style={{ backgroundColor: "#111827" }}>
-      {/* Animated background elements */}
-      <motion.div
-        className="absolute inset-0 opacity-10"
-        animate={{
-         
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-      
+    <section className="relative w-full py-28 overflow-hidden bg-[#1f4b68]">
+
+      {/* Radial glow */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="w-[800px] h-[800px] bg-white/10 blur-[160px] rounded-full" />
+      </div>
+
+      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+
+        {/* Heading */}
+        <motion.h2
+          className="text-5xl md:text-6xl font-bold tracking-[-0.02em] text-white mb-6"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+        >
+          Ready to Kruze?
+        </motion.h2>
+
+        {/* Subheading */}
+        <motion.p
+          className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto mb-12"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
+        >
+          Your premium mobility companion — travel smarter, smoother, and in style.
+          Download the app and start your journey today.
+        </motion.p>
+
+        {/* Buttons */}
+        <motion.div
+          className="flex flex-col sm:flex-row items-center justify-center gap-5"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.25 }}
+        >
+
+          {/* iOS Button */}
+          <a
+            href="#"
+            className="
+              flex items-center gap-3 
+              bg-white text-black 
+              hover:bg-neutral-200 
+              transition-all duration-300
+              px-6 py-3 rounded-xl 
+              shadow-[0_0_20px_rgba(255,255,255,0.15)]
+            "
+          >
+            {/* <Apple className="w-6 h-6" /> */}
+            <span className="font-semibold tracking-tight">
+              Download for iOS
+            </span>
+          </a>
+
+          {/* Android Button */}
+          <a
+            href="#"
+            className="
+              flex items-center gap-3 
+              bg-[#34A853] text-white 
+              hover:bg-[#2e9349] 
+              transition-all duration-300
+              px-6 py-3 rounded-xl 
+              shadow-[0_0_20px_rgba(52,168,83,0.35)]
+            "
+          >
+            {/* <Play className="w-6 h-6" /> */}
+            <span className="font-semibold tracking-tight">
+              Download for Android
+            </span>
+          </a>
+
+        </motion.div>
+      </div>
+
       {/* Floating particles */}
-      {[...Array(6)].map((_, i) => (
+      {[...Array(10)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-1 h-1 bg-white/20"
+          className="absolute bg-white/20 rounded-full"
           style={{
-            left: `${15 + i * 15}%`,
-            top: `${20 + (i % 3) * 30}%`,
+            width: Math.random() * 5 + 2,
+            height: Math.random() * 5 + 2,
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
           }}
           animate={{
-            y: [0, -30, 0],
-            opacity: [0.2, 0.8, 0.2],
-            scale: [1, 1.5, 1],
+            y: [0, -20, 0],
+            opacity: [0.3, 0.8, 0.3],
           }}
           transition={{
-            duration: 4 + i * 0.5,
+            duration: 4 + Math.random() * 2,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: i * 0.3,
           }}
         />
       ))}
-
-      <div className="max-w-7xl mx-auto px-6" ref={containerRef}>
-        <motion.div 
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center"
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          {stats.map((s, i) => (
-            <motion.div 
-              className="space-y-2 relative" 
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ 
-                duration: 0.6, 
-                delay: i * 0.15,
-                ease: "easeOut"
-              }}
-            >
-              {/* Subtle glow effect behind numbers */}
-              
-              
-              <AnimatedCounter
-                target={s.value}
-                suffix={s.suffix}
-                duration={2000 + i * 200}
-                index={i}
-              />
-              
-              <motion.div 
-                className="text-sm uppercase text-gray-300 tracking-widest font-light relative z-10"
-                initial={{ opacity: 0, y: 10 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-                transition={{ 
-                  duration: 0.5, 
-                  delay: i * 0.1 + 0.8,
-                  ease: "easeOut"
-                }}
-              >
-                {s.label}
-              </motion.div>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-      
     </section>
   );
 }
