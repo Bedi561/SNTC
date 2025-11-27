@@ -3,8 +3,8 @@ import "./globals.css";
 import { plusJakartaSans } from "../font"; // use ONLY Plus Jakarta Sans
 
 export const metadata: Metadata = {
-  title: "SunTrans Movers",
-  description: "Logistics solutions simplified.",
+  title: "Kruze Cabs",
+  description: "Premium mobility, elevated with care, comfort, and attention to detail—every ride, every time.",
 };
 
 export default function RootLayout({
